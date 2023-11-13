@@ -1,5 +1,5 @@
 //import logo from "./logo.svg";
-import "./App.css";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -46,11 +46,41 @@ const pizzaData = [
   },
 ];
 
+function Header() {
+  return (
+    <header className="header">
+      <h1>Fast React Pizza Co.</h1>
+    </header>
+  );
+}
+
+function Menu() {
+  return (
+    <main className="menu">
+      <h2>Our Menu</h2>
+      <Pizza />
+    </main>
+  );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 10;
+  const closedHour = 22;
+  const isOpen = hour >= openHour && hour <= closedHour;
+  // if (hour >= openHour && hour <= closedHour) alert("We are currently open!");
+  // else alert("Sorry, we are currently closed");
+  return (
+    <footer className="footer">
+      {new Date().toLocaleString()} We are currently open!
+    </footer>
+  );
+}
 function Pizza() {
   return (
     <div>
       <img src="pizzas/margherita.jpg" alt="margherita Pizza" />
-      <h1>Pizza Margherita</h1>
+      <h3>Pizza Margherita</h3>
       <p>Tomato and mozarella</p>
     </div>
   );
@@ -59,12 +89,10 @@ function Pizza() {
 function App() {
   // const x = "RYAN";
   return (
-    <div className="App">
-      <h1>Hello React!</h1>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
+    <div className="container">
+      <Header />
+      <Menu />
+      <Footer />
     </div>
   );
 }
